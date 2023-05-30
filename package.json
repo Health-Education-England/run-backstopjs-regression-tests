@@ -1,0 +1,14 @@
+{
+  "name": "run-backstopjs-regression-tests",
+  "version": "1.0.0",
+  "description": "HEE backstopjs regression testing implementation.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Health-Education-England/run-backstopjs-regression-tests.git"
+  },
+  "author": "https://github.com/nhsuk/",
+  "license": "MIT"
+}

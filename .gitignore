@@ -1,0 +1,26 @@
+# dotenv environment variables file
+.env
+
+# IDEs and editors
+.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.iml
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Dependency directories
+node_modules/
+
+# BackstopJS
+backstop_data/bitmaps_test/*
+backstop_data/html_report/*
