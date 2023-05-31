@@ -44,4 +44,6 @@ scenarioIncludes.forEach(includeFile => {
 baseConfig.scenarios = scenarioData;
 
 // Output new backstop config to json file.
-utils.writeConfigFile('../config/backstop.json', baseConfig);
+utils.writeConfigFile('backstop.json', baseConfig);
+
+
