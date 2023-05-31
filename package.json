@@ -3,12 +3,21 @@
   "version": "1.0.0",
   "description": "HEE backstopjs regression testing implementation.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run backstop:test",
+    "backstop:ref": "source .env && npm run backstop:generate-config && $TEST_CLI_COMMAND",
+    "backstop:test": "source .env && npm run backstop:generate-config && $TEST_CLI_COMMAND",
+    "backstop:generate-config": "node ./scripts/generateConfig.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Health-Education-England/run-backstopjs-regression-tests.git"
   },
   "author": "https://github.com/nhsuk/",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "backstopjs": "^6.2.1",
+    "dotenv": "^16.0.3",
+    "glob": "^10.2.6",
+    "start-server-and-test": "^2.0.0"
+  }
 }
