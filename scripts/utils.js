@@ -11,7 +11,7 @@ const glob = require('glob');
  * @return {string[]} Array containing scenario objects.
  */
 const getScenarioIncludes = () => {
-  let includePaths = glob.globSync('../scenarios/*.json');
+  let includePaths = glob.globSync('/app/src/backstop/scenarios/*.json');
 
   if (includePaths.length === 0) {
     throw new Error('No scenario includes found.')

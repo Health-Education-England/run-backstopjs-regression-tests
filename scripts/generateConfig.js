@@ -2,10 +2,10 @@
  * Generates BackstopJS config file by including scenarios dynamically.
  */
 
-const TEST_HOST = 'http://localhost:3000';
+const TEST_HOST = 'http://127.0.0.1:8080';
 
 const utils = require('./utils');
-const baseConfig = require('../../config/base.json');
+const baseConfig = require('/app/src/backstop/config/base.json');
 
 let scenarioIncludes = [];
 
@@ -21,7 +21,7 @@ let scenarioData = [];
 
 // Dynamically require scenario include files and generate scenario arrays.
 scenarioIncludes.forEach(includeFile => {
-  const scenario = require('../../scenarios/' + includeFile);
+  const scenario = require('/app/src/backstop/scenarios/' + includeFile);
 
   let scenarios = [];
 
@@ -44,6 +44,4 @@ scenarioIncludes.forEach(includeFile => {
 baseConfig.scenarios = scenarioData;
 
 // Output new backstop config to json file.
-utils.writeConfigFile('backstop.json', baseConfig);
-
-
+utils.writeConfigFile('/app/src/backstop/config/backstop.json', baseConfig);

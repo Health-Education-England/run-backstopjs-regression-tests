@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "HEE backstopjs regression testing implementation.",
   "scripts": {
-    "serve": "node scripts/serve.js",
+    "serve": "npx http-server /app/src/public -s -p 8080",
     "test": "npm run backstop:generate-config && npm run backstop:test",
-    "backstop:ref": "npm run backstop:generate-config && start-server-and-test serve http://localhost:3000 'npx backstop --config=./backstop.json reference --docker'",
-    "backstop:test": "npm run backstop:generate-config && start-server-and-test serve http://localhost:3000 'npx backstop --config=./backstop.json test --docker'",
+    "backstop:ref": "npm run backstop:generate-config && start-server-and-test serve http://127.0.0.1:8080 'npx backstop --config=/app/src/backstop/config/backstop.json reference'",
+    "backstop:test": "npm run backstop:generate-config && start-server-and-test serve http://127.0.0.1:8080 'npx backstop --config=/app/src/backstop/config/backstop.json test'",
+    "backstop:approve": "npx backstop --config=/app/src/backstop/config/backstop.json approve",
     "backstop:generate-config": "node scripts/generateConfig.js"
   },
   "repository": {
@@ -17,7 +18,6 @@
   "license": "MIT",
   "devDependencies": {
     "backstopjs": "^6.2.1",
-    "dotenv": "^16.1.1",
     "glob": "^10.2.6",
     "http-server": "^14.1.1",
     "start-server-and-test": "^2.0.0"
