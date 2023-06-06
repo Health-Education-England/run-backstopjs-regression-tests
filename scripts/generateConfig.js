@@ -6,7 +6,7 @@
 const TEST_HOST = typeof process.env.HTTP_SERVE_HOST !== 'undefined' ?
   process.env.HTTP_SERVE_HOST : 'http://127.0.0.1:8080';
 
-const TEST_BASEPATH = typeof process.env.HTTP_SERVE_HOST !== 'undefined' ?
+const TEST_BASEPATH = typeof process.env.HTTP_SERVE_BASEPATH !== 'undefined' ?
   process.env.HTTP_SERVE_BASEPATH.slice(0, -1) : '';
 
 const utils = require('./utils');
