@@ -2,10 +2,9 @@
  * Generates BackstopJS config file by including scenarios dynamically.
  */
 
-// Set environment variables for HTTP HOST and HTTP BASEPATH values.
-const TEST_HOST = typeof process.env.HTTP_SERVE_HOST !== 'undefined' ?
-  process.env.HTTP_SERVE_HOST : 'http://127.0.0.1:8080';
+const TEST_HOST = 'http://127.0.0.1:8080';
 
+// Set environment variables for HTTP BASEPATH value.
 const TEST_BASEPATH = typeof process.env.HTTP_SERVE_BASEPATH !== 'undefined' ?
   process.env.HTTP_SERVE_BASEPATH.slice(0, -1) : '';
 
