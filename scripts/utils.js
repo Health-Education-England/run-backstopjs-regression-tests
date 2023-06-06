@@ -106,9 +106,8 @@ const applyScenarioOverrides = (host, basePath, scenarios, overrides) => {
     // When an override is a new scenario add object to auto generated scenarios.
     if (!exists) {
 
-      // Update override to use correct HOST and BASEPATH.
-      if (override.url !== 'undefined') {
-        console.log(override);
+      // Update override to use correct BASEPATH.
+      if (override.hasOwnProperty('url')) {
         let urlSplit = override.url.split('/');
         const newArr = urlSplit.slice(2);
         newArr[0] = host + basePath;
