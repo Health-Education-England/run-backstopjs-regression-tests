@@ -31,12 +31,13 @@ const getScenarioIncludes = () => {
  * Generates scenarios array for JSON config.
  *
  * @param  {string} host        Hostname for test server.
- * @param  {string} scenarioId          Scenario scenarioId.
+ * @param  {string} basePath    Base path for test server urls.
+ * @param  {string} scenarioId  Scenario scenarioId.
  * @param  {string} pathPattern Glob pattern for block html files.
  *
  * @return {Object[]} Array containing scenario objects.
  */
-const generateScenariosArray = (host, scenarioId, pathPattern) => {
+const generateScenariosArray = (host, basePath, scenarioId, pathPattern) => {
   let scenarios = [];
 
   let filePaths = glob.globSync(pathPattern);
@@ -68,7 +69,7 @@ const generateScenariosArray = (host, scenarioId, pathPattern) => {
 
     let config = {
       label: name,
-      url: host + urlPath
+      url: host + basePath + urlPath
     }
 
     scenarios.push(config);
@@ -80,12 +81,14 @@ const generateScenariosArray = (host, scenarioId, pathPattern) => {
 /**
  * Merges manual scenario overrides with auto generated scenarios array.
  *
+ * @param  {string} host        Hostname for test server.
+ * @param  {string} basePath    Base path for test server urls.
  * @param  {Object[]} scenarios Array of auto generated scenario objects.
  * @param  {Object[]} overrides Array of manually overridden scenarios.
  *
  * @return {Object[]} Array containing merged array of scenario objects.
  */
-const applyScenarioOverrides = (scenarios, overrides) => {
+const applyScenarioOverrides = (host, basePath, scenarios, overrides) => {
   overrides.forEach(override => {
 
     let exists = false;
@@ -102,6 +105,13 @@ const applyScenarioOverrides = (scenarios, overrides) => {
 
     // When an override is a new scenario add object to auto generated scenarios.
     if (!exists) {
+
+      // Update override to use correct HOST and BASEPATH.
+      let urlSplit = override.url.split('/');
+      const newArr = urlSplit.slice(2);
+      newArr[0] = host + basePath;
+      override.url = newArr.join('/');
+
       scenarios.push(override);
     }
   })
