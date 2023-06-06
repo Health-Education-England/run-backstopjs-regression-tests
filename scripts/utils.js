@@ -107,10 +107,18 @@ const applyScenarioOverrides = (host, basePath, scenarios, overrides) => {
     if (!exists) {
 
       // Update override to use correct HOST and BASEPATH.
-      let urlSplit = override.url.split('/');
-      const newArr = urlSplit.slice(2);
-      newArr[0] = host + basePath;
-      override.url = newArr.join('/');
+      if (override.url !== 'undefined') {
+        let urlSplit = override.url.split('/');
+        const newArr = urlSplit.slice(2);
+        newArr[0] = host + basePath;
+        override.url = newArr.join('/');
+      } else {
+        console.log('#############' + override + '?!?!?!?!?');
+        console.log('#############' + override + '?!?!?!?!?');
+        console.log('#############' + override + '?!?!?!?!?');
+        console.log('#############' + override + '?!?!?!?!?');
+        console.log('#############' + override + '?!?!?!?!?');
+      }
 
       scenarios.push(override);
     }
