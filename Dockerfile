@@ -8,4 +8,4 @@ COPY . .
 
 RUN npm install
 
-RUN npx playwright install-deps
+RUN npx playwright@1.39.0 install-deps
